@@ -109,12 +109,18 @@ class VulnDetector:
     def check_ssrf(self, url: str) -> Dict:
         result = {'vulnerable': False, 'tests': []}
         targets = ['http://169.254.169.254/latest/meta-data/', 'http://127.0.0.1:22', 'http://localhost:8080']
+        ssrf_patterns = ['instance-id', 'ami-id', 'public-hostname', 'local-ipv4',
+                         'security-credentials', 'iam/', 'meta-data',
+                         'ssh-rsa', 'ssh-dss', 'protocol version']
         for target in targets:
             try:
                 resp = self.client.get(url, params={'url': target, 'path': target}, timeout=10)
-                if resp.status_code == 200 and ('meta-data' in resp.text or 'ssh' in resp.text.lower()):
-                    result['vulnerable'] = True
-                    result['tests'].append({'target': target, 'status': resp.status_code})
+                body = resp.text.lower()
+                if resp.status_code == 200:
+                    matches = [p for p in ssrf_patterns if p in body]
+                    if len(matches) >= 2:
+                        result['vulnerable'] = True
+                        result['tests'].append({'target': target, 'status': resp.status_code, 'matches': matches[:3]})
             except:
                 continue
         return result

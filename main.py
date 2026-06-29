@@ -242,8 +242,10 @@ def cmd_scan(args):
 
 
 def cmd_full(args):
-    args.all = True
     args.tech = True
+    import types
+    args.scan = 'all'
+    args.bypass = 'all'
     out.info('Running full Axiom assessment...')
     cmd_discover(args)
     print()

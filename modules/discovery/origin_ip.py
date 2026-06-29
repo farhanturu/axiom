@@ -193,6 +193,9 @@ class OriginDiscovery:
                 result['subdomain_ips'].append(ip)
 
         candidates = set()
+        for ip in result['a_records']:
+            if not self._is_cdn_ip(ip):
+                candidates.add(ip)
         for ip_list in [result['mx_records'], result['ns_records'],
                         result['crt_sh_ips'], result['subdomain_ips'], result['ssl_san_ips']]:
             for item in ip_list:
