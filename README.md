@@ -50,7 +50,7 @@ Axiom is a comprehensive penetration testing framework for evaluating web applic
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/axiom.git
+git clone https://github.com/farhanturu/axiom.git
 cd axiom
 
 python3 -m venv .venv
