@@ -9,7 +9,9 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-00ff00.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/Version-2.1.0-06b6d4.svg?style=flat-square)](https://github.com/farhanturu/axiom/releases)
-[![Status](https://img.shields.io/badge/Status-Stable-brightgreen.svg?style=flat-square)](https://github.com/farhanturu/axiom)
+
+[![Documentation](https://img.shields.io/badge/Docs-Read%20Now-06b6d4?style=for-the-badge)](https://farhanturu.github.io/axiom)
+[![GitHub](https://img.shields.io/badge/GitHub-Star-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/farhanturu/axiom)
 
 ---
 
@@ -17,202 +19,167 @@ Penetration testing toolkit for CDN, WAF, CAPTCHA, bot detection, and rate limit
 
 **Designed for authorized security testing and educational purposes only.**
 
-[![Documentation](https://img.shields.io/badge/Documentation-06b6d4?style=for-the-badge&logo=readthedocs&logoColor=white)](https://farhanturu.github.io/axiom)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/farhanturu/axiom)
-
 </div>
+
+---
+
+## Quick Start (2 Minutes)
+
+```bash
+# 1. Clone
+git clone https://github.com/farhanturu/axiom.git && cd axiom
+
+# 2. Setup
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# 3. Run
+python3 main.py -t https://target.com --full
+```
+
+---
+
+## What Can Axiom Do?
+
+<table>
+<tr><td>🔍</td><td><b>Discover</b> - Find CDN, WAF, origin IPs, and tech stack</td></tr>
+<tr><td>⚡</td><td><b>Bypass</b> - Test WAF evasion, CAPTCHA, rate limits, bot detection</td></tr>
+<tr><td>🛡️</td><td><b>Scan</b> - Port scan, directory busting, vulnerability detection</td></tr>
+</table>
+
+---
+
+## Commands
+
+### Discovery
+```bash
+python3 main.py -t https://target.com --discover        # Find CDN & WAF
+python3 main.py -t https://target.com --discover --tech  # + Tech stack
+```
+
+### Bypass
+```bash
+python3 main.py -t https://target.com --bypass waf       # WAF bypass test
+python3 main.py -t https://target.com --bypass captcha   # CAPTCHA test
+python3 main.py -t https://target.com --bypass all       # All bypass tests
+```
+
+### Scan
+```bash
+python3 main.py -t https://target.com --scan ports       # Port scan
+python3 main.py -t https://target.com --scan dirs        # Directory scan
+python3 main.py -t https://target.com --scan all         # Full scan
+```
+
+### Full Assessment
+```bash
+python3 main.py -t https://target.com --full             # Everything at once
+```
+
+### Help
+```bash
+python3 main.py --help                                   # Show all commands
+python3 main.py --docs                                   # Open documentation
+```
 
 ---
 
 ## Features
 
+| Feature | Description |
+|---------|-------------|
+| CDN Detection | Cloudflare, CloudFront, Fastly, Akamai, Imperva |
+| WAF Fingerprinting | 20+ WAFs with confidence scoring |
+| Origin IP Hunting | crt.sh, DNS history, subdomain enumeration |
+| WAF Bypass | 200+ payloads (SQLi, XSS, LFI, RCE, SSRF) |
+| CAPTCHA Testing | OCR, audio STT, rate limit detection |
+| Bot Detection | UA rotation, TLS fingerprint, referer spoof |
+| Port Scanner | 1000+ ports with async scanning |
+| Directory Buster | 500+ paths, recursive depth control |
+| Vulnerability Scan | Headers, redirects, SQLi, XSS, SSRF |
+
+---
+
+## Documentation
+
+**Full documentation with examples and API reference:**
+
+[📖 Read the Docs](https://farhanturu.github.io/axiom)
+
+---
+
+## Examples
+
+### Discovery Output
 ```
-  Discovery
-  ├── CDN detection       Cloudflare, CloudFront, Fastly, Akamai, Imperva
-  ├── WAF fingerprinting  20+ WAFs with confidence scoring
-  ├── Origin IP hunting   crt.sh, DNS history, subdomain enumeration
-  └── Tech stack          Server, language, framework, CMS detection
+[+] Starting discovery on https://example.com
+[+] Detecting CDN and WAF...
 
-  Bypass
-  ├── WAF evasion         200+ payloads (SQLi, XSS, LFI, RCE, SSRF)
-  ├── CAPTCHA solving     OCR, audio STT, 2captcha, CapSolver
-  ├── Rate limit bypass   Header spoof, burst, slowloris, chunked
-  ├── Bot detection       UA rotation, TLS fingerprint, referer spoof
-  ├── Honeypot detection  Hidden fields, CSS traps, timing analysis
-  └── IP block bypass     Proxy rotation, geo-spoof, Tor network
-
-  Scan
-  ├── Port scanner        1000+ ports with async scanning
-  ├── Directory busting   500+ paths, recursive depth control
-  └── Vulnerability       Headers, redirects, SQLi, XSS, SSRF, XXE
-```
-
-## Installation
-
-```bash
-git clone https://github.com/farhanturu/axiom.git
-cd axiom
-
-python3 -m venv .venv
-source .venv/bin/activate
-
-pip install -r requirements.txt
-```
-
-### Optional Dependencies
-
-```bash
-# Browser automation (for CAPTCHA/JS challenges)
-pip install playwright
-playwright install chromium
-
-# CAPTCHA solving
-pip install 2captcha-python
-
-# Advanced TLS fingerprinting
-pip install tls-client
+       CDN & WAF Detection
+╭──────────┬─────────────────────╮
+│ Property │ Value               │
+├──────────┼─────────────────────┤
+│ Domain   │ example.com         │
+│ CDN      │ Cloudflare          │
+│ WAF      │ Cloudflare WAF      │
+╰──────────┴─────────────────────╯
 ```
 
-## Quick Start
+### Bypass Output
+```
+[+] Testing WAF bypass with payloads...
 
-```bash
-# Full security assessment
-python3 main.py -t https://target.com --full
-
-# Discovery only
-python3 main.py -t https://target.com --discover
-
-# WAF bypass testing
-python3 main.py -t https://target.com --bypass waf --param id
-
-# Port scanning
-python3 main.py -t https://target.com --scan ports
-
-# Generate report
-python3 main.py -t https://target.com --full -o report.json
+         WAF Bypass Results
+╭──────────┬──────────┬──────────╮
+│ Category │ Attempts │ Bypassed │
+├──────────┼──────────┼──────────┤
+│ SQLi     │ 20       │ 3        │
+│ XSS      │ 20       │ 5        │
+│ LFI      │ 15       │ 2        │
+╰──────────┴──────────┴──────────╯
 ```
 
-## Usage
+---
 
-### Discovery
+## Request a Feature
 
-```bash
-# Full discovery (CDN, WAF, origin IPs)
-python3 main.py -t https://target.com --discover
+Have an idea for Axiom? We'd love to hear it!
 
-# With technology detection
-python3 main.py -t https://target.com --discover --tech
-```
+**[📝 Request a Feature](https://github.com/farhanturu/axiom/issues/new?template=feature_request.md)**
 
-### Bypass
+---
 
-```bash
-# All bypass techniques
-python3 main.py -t https://target.com --bypass all
+## Contributing
 
-# WAF bypass with custom parameter
-python3 main.py -t https://target.com --bypass waf --param id
+We welcome contributions! Here's how:
 
-# CAPTCHA and rate limit testing
-python3 main.py -t https://target.com --bypass captcha
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-# Bot detection evasion
-python3 main.py -t https://target.com --bypass botdetect
-```
+---
 
-### Scan
+## Support
 
-```bash
-# Full scan
-python3 main.py -t https://target.com --scan all
+- 📖 [Documentation](https://farhanturu.github.io/axiom)
+- 🐛 [Report Bugs](https://github.com/farhanturu/axiom/issues/new?template=bug_report.md)
+- 💡 [Request Features](https://github.com/farhanturu/axiom/issues/new?template=feature_request.md)
+- 📧 [Email](mailto:paongtech@gmail.com)
 
-# Port scan only
-python3 main.py -t https://target.com --scan ports
-
-# Directory enumeration
-python3 main.py -t https://target.com --scan dirs
-
-# Quick scan (top 100 ports)
-python3 main.py -t https://target.com --scan ports --quick
-```
-
-### Proxy
-
-```bash
-# Test proxy connectivity
-python3 main.py --proxy-action check --proxies http://proxy1:8080
-
-# Tor integration
-python3 main.py --proxy-action tor --new-ip
-```
-
-## Architecture
-
-```
-axiom/
-├── main.py                    Entry point
-├── requirements.txt           Dependencies
-├── CHANGELOG.md               Version history
-│
-├── core/
-│   ├── client.py              HTTP client with async support
-│   ├── proxy.py               Proxy rotation and Tor
-│   ├── fingerprint.py         Browser fingerprint spoofing
-│   ├── tls.py                 TLS fingerprint emulation
-│   ├── reporter.py            Report generation (JSON/HTML)
-│   └── utils.py               Utilities
-│
-├── modules/
-│   ├── discovery/
-│   │   ├── cdn_finder.py      CDN and WAF detection
-│   │   ├── origin_ip.py       Origin IP discovery
-│   │   └── tech_stack.py      Technology detection
-│   │
-│   ├── bypass/
-│   │   ├── waf.py             WAF bypass (200+ payloads)
-│   │   ├── captcha.py         CAPTCHA solving
-│   │   ├── ratelimit.py       Rate limit bypass
-│   │   ├── botdetect.py       Bot detection evasion
-│   │   ├── honeypot.py        Honeypot detection
-│   │   └── ipblock.py         IP block bypass
-│   │
-│   └── scan/
-│       ├── port.py            Async port scanner
-│       ├── dirbuster.py       Directory enumeration
-│       └── vuln.py            Vulnerability detection
-│
-└── data/
-    ├── payloads/              Payload database
-    ├── waf_signatures.json    WAF detection rules
-    ├── user_agents.json       Browser user agents
-    └── cdn_ips.json           CDN IP ranges
-```
-
-## Supported
-
-| Category | Items |
-|----------|-------|
-| CDNs | Cloudflare, CloudFront, Fastly, Akamai, Imperva, StackPath |
-| WAFs | Cloudflare, AWS, Imperva, Akamai, F5, ModSecurity, Sucuri, Barracuda, Fortinet |
-| Payloads | SQLi, XSS, LFI, RCE, SSRF, XXE, Header Injection |
-| Protocols | HTTP/1.1, HTTP/2, TLS 1.2/1.3 |
-
-## Ethical Use
-
-Axiom is designed for:
-
-- Authorized penetration testing
-- Internal security assessments
-- CTF competitions
-- Security research and education
-
-**Do not use against systems without explicit written authorization.**
+---
 
 ## License
 
-MIT License
+MIT License - see [LICENSE](LICENSE) for details.
 
-## Contact
+---
 
-- Email: paongtech@gmail.com
-- GitHub: https://github.com/farhanturu/axiom
+<div align="center">
+
+**Built for the security community**
+
+[Star on GitHub](https://github.com/farhanturu/axiom)
+
+</div>

@@ -241,7 +241,36 @@ def cmd_scan(args):
     client.close()
 
 
-def cmd_full(args):
+def cmd_help():
+    out.banner()
+    print('''
+AXIOM - Security Testing Toolkit
+
+Usage:
+  python3 main.py -t <URL> [options]
+
+Commands:
+  --discover           Detect CDN, WAF, origin IPs
+  --bypass <type>      Test bypass (waf, captcha, ratelimit, botdetect, all)
+  --scan <type>        Scan target (ports, dirs, vulns, all)
+  --full               Run all modules
+
+Examples:
+  python3 main.py -t https://example.com --discover
+  python3 main.py -t https://example.com --bypass waf
+  python3 main.py -t https://example.com --scan ports
+  python3 main.py -t https://example.com --full
+
+Options:
+  -t, --target         Target URL
+  -o, --output         Save results to JSON
+  --param              Parameter for injection (default: id)
+  --method             HTTP method (GET/POST)
+  --quick              Quick scan mode
+  --api-key            API key for extended features
+
+Docs: https://farhanturu.github.io/axiom
+''')
     args.tech = True
     import types
     args.scan = 'all'
@@ -329,6 +358,10 @@ Examples:
     proxy.add_argument('--new-ip', action='store_true', help='Request new Tor identity')
 
     args = parser.parse_args()
+
+    if len(sys.argv) == 1 or '--help' in sys.argv or '-h' in sys.argv:
+        cmd_help()
+        sys.exit(0)
 
     if not any([args.discover, args.bypass, args.scan, args.full, args.proxy_action]):
         parser.print_help()

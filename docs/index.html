@@ -3,344 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axiom Documentation</title>
+    <title>Axiom - Security Testing Toolkit</title>
+    <meta name="description" content="Multi-layer security bypass framework for penetration testing. Test CDN, WAF, CAPTCHA, bot detection.">
+    <meta name="keywords" content="security testing, WAF bypass, penetration testing, CDN detection, CAPTCHA, bot detection, rate limit, SQL injection, XSS, security tools, ethical hacking">
     <link rel="icon" type="image/svg+xml" href="../logo.svg">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="grid-bg"></div>
     <div class="scan-line"></div>
     
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav>
+        <div class="container">
             <a href="/" class="logo">
-                <img src="../logo.svg" alt="Axiom" width="32" height="32">
-                <span>AXIOM</span>
+                <img src="../logo.svg" alt="Axiom" width="28" height="28">
+                AXIOM
             </a>
             <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="#installation">Install</a>
-                <a href="#usage">Usage</a>
-                <a href="#examples">Examples</a>
+                <a href="#features">Fitur</a>
+                <a href="#install">Install</a>
+                <a href="#commands">Commands</a>
+                <a href="#output">Output</a>
                 <a href="#api">API</a>
+                <a href="https://github.com/farhanturu/axiom" target="_blank">GitHub</a>
             </div>
-            <a href="https://github.com/farhanturu/axiom" class="btn-github" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.927 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.233 1.911 1.233 3.221 0 4.609-2.807 5.921-5.479 6.218.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
+            <a href="https://github.com/farhanturu/axiom" class="btn btn-primary" target="_blank">Download</a>
         </div>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-badge">v2.1.0 - Multi-Layer Security Framework</div>
-            <h1 class="hero-title">
-                <span class="gradient-text">AXIOM</span>
-            </h1>
-            <p class="hero-subtitle">Penetration testing toolkit for CDN, WAF, CAPTCHA, bot detection, and rate limit evaluation</p>
-            <div class="hero-cta">
-                <a href="#installation" class="btn btn-primary">Get Started</a>
-                <a href="#examples" class="btn btn-outline">View Examples</a>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">v2.1.0 • MIT License</div>
+            <h1><span class="gradient">AXIOM</span></h1>
+            <p class="subtitle">Security testing toolkit. Test WAF, bypass protections, scan vulnerabilities.</p>
+            <div class="hero-btns">
+                <a href="#install" class="btn btn-primary">Mulai</a>
+                <a href="#features" class="btn btn-outline">Fitur</a>
                 <a href="https://github.com/farhanturu/axiom" class="btn btn-outline" target="_blank">GitHub</a>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number" data-target="500">0</span>+
-                    <span class="stat-label">Payloads</span>
+            <div class="stats">
+                <div class="stat"><div class="stat-val">500+</div><div class="stat-label">Payloads</div></div>
+                <div class="stat"><div class="stat-val">20+</div><div class="stat-label">WAF</div></div>
+                <div class="stat"><div class="stat-val">10x</div><div class="stat-label">Faster</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">Apa yang Bisa Dilakukan</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🔍 Discovery</h3>
+                    <p>Cari tahu infrastruktur target</p>
+                    <ul>
+                        <li>Deteksi CDN (Cloudflare, AWS, dll)</li>
+                        <li>Identifikasi WAF</li>
+                        <li>Cari Origin IP asli</li>
+                    </ul>
                 </div>
-                <div class="stat">
-                    <span class="stat-number" data-target="20">0</span>+
-                    <span class="stat-label">WAFs</span>
+                <div class="card">
+                    <h3>⚡ Bypass</h3>
+                    <p>Test bypass keamanan</p>
+                    <ul>
+                        <li>WAF evasion (SQLi, XSS, LFI)</li>
+                        <li>CAPTCHA detection</li>
+                        <li>Rate limit bypass</li>
+                        <li>Bot detection test</li>
+                    </ul>
                 </div>
-                <div class="stat">
-                    <span class="stat-number" data-target="10">0</span>x
-                    <span class="stat-label">Faster</span>
+                <div class="card">
+                    <h3>🛡️ Scan</h3>
+                    <p>Scan keamanan target</p>
+                    <ul>
+                        <li>Port scanning</li>
+                        <li>Directory enumeration</li>
+                        <li>Vulnerability check</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="section">
+    <section id="install" class="dark">
         <div class="container">
-            <h2 class="section-title">Features</h2>
-            <div class="features-grid">
-                <div class="feature-card" data-delay="0">
-                    <div class="feature-icon">🔍</div>
+            <h2 class="section-title">Install</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h4>Clone</h4>
+                        <div class="code">
+                            <code>git clone https://github.com/farhanturu/axiom.git</code>
+                            <button class="copy" onclick="copy(this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h4>Setup</h4>
+                        <div class="code">
+                            <code>cd axiom && python3 -m venv .venv && source .venv/bin/activate</code>
+                            <button class="copy" onclick="copy(this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h4>Install</h4>
+                        <div class="code">
+                            <code>pip install -r requirements.txt</code>
+                            <button class="copy" onclick="copy(this)">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="commands">
+        <div class="container">
+            <h2 class="section-title">Commands</h2>
+            <div class="grid-2">
+                <div class="card">
                     <h3>Discovery</h3>
-                    <p>CDN detection, WAF fingerprinting, origin IP hunting, and technology stack identification.</p>
-                    <ul>
-                        <li>Cloudflare, CloudFront, Fastly, Akamai</li>
-                        <li>20+ WAF signatures</li>
-                        <li>crt.sh, DNS history</li>
-                    </ul>
+                    <div class="code"><code>python3 main.py -t URL --discover</code></div>
+                    <p style="margin-top:12px">Cari CDN, WAF, Origin IP</p>
                 </div>
-                <div class="feature-card" data-delay="100">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Bypass</h3>
-                    <p>WAF evasion, CAPTCHA solving, rate limit bypass, and bot detection evasion.</p>
-                    <ul>
-                        <li>500+ attack payloads</li>
-                        <li>SQLi, XSS, LFI, RCE</li>
-                        <li>Header injection</li>
-                    </ul>
-                </div>
-                <div class="feature-card" data-delay="200">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Scan</h3>
-                    <p>Port scanning, directory enumeration, and vulnerability detection.</p>
-                    <ul>
-                        <li>1000+ ports async scan</li>
-                        <li>500+ directory paths</li>
-                        <li>SSRF, XXE detection</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="installation" class="section">
-        <div class="container">
-            <h2 class="section-title">Installation</h2>
-            <div class="install-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Clone Repository</h3>
-                    <div class="code-block">
-                        <code>git clone https://github.com/farhanturu/axiom.git</code>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Setup Environment</h3>
-                    <div class="code-block">
-                        <code>cd axiom && python3 -m venv .venv && source .venv/bin/activate</code>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Install Dependencies</h3>
-                    <div class="code-block">
-                        <code>pip install -r requirements.txt</code>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="usage" class="section dark">
-        <div class="container">
-            <h2 class="section-title">Usage</h2>
-            <div class="usage-grid">
-                <div class="usage-card">
-                    <h3>Discovery</h3>
-                    <p>Identify CDN, WAF, and origin IPs</p>
-                    <div class="code-block">
-                        <code>python3 main.py -t https://target.com --discover</code>
-                    </div>
-                </div>
-                <div class="usage-card">
+                <div class="card">
                     <h3>WAF Bypass</h3>
-                    <p>Test WAF evasion techniques</p>
-                    <div class="code-block">
-                        <code>python3 main.py -t https://target.com --bypass waf --param id</code>
-                    </div>
+                    <div class="code"><code>python3 main.py -t URL --bypass waf</code></div>
+                    <p style="margin-top:12px">Test bypass WAF</p>
                 </div>
-                <div class="usage-card">
+                <div class="card">
                     <h3>Port Scan</h3>
-                    <p>Scan open ports with service detection</p>
-                    <div class="code-block">
-                        <code>python3 main.py -t https://target.com --scan ports</code>
-                    </div>
+                    <div class="code"><code>python3 main.py -t URL --scan ports</code></div>
+                    <p style="margin-top:12px">Scan port terbuka</p>
                 </div>
-                <div class="usage-card">
-                    <h3>Full Assessment</h3>
-                    <p>Run all modules at once</p>
-                    <div class="code-block">
-                        <code>python3 main.py -t https://target.com --full</code>
-                    </div>
+                <div class="card">
+                    <h3>Full Scan</h3>
+                    <div class="code"><code>python3 main.py -t URL --full</code></div>
+                    <p style="margin-top:12px">Jalankan semua modul</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="examples" class="section">
+    <section id="output" class="dark">
         <div class="container">
-            <h2 class="section-title">Example Output</h2>
-            <div class="example-tabs">
-                <button class="tab active" onclick="showExample('discovery')">Discovery</button>
-                <button class="tab" onclick="showExample('bypass')">Bypass</button>
-                <button class="tab" onclick="showExample('scan')">Scan</button>
+            <h2 class="section-title">Contoh Output</h2>
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('discovery')">Discovery</button>
+                <button class="tab" onclick="showTab('bypass')">Bypass</button>
+                <button class="tab" onclick="showTab('scan')">Scan</button>
             </div>
             
-            <div id="example-discovery" class="example-content active">
+            <div id="discovery" class="example active">
                 <div class="terminal">
-                    <div class="terminal-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="terminal-title">Discovery Module</span>
-                    </div>
-                    <pre class="terminal-body"><code>$ python3 main.py -t https://example.com --discover
-
-    ╔═══╗  ╔╗  ╔╗     ╔╗
-    ║╔══╝  ║║  ║║     ║║
-    ║╚══╗  ║║  ║║     ║║
-    ║╔══╝  ║║  ║║     ║║
-    ║║     ║╚══╝╚══╗  ║╚══╗
-    ╚╝     ╚═══════╝  ╚═══╝
-    Multi-Layer Security Bypass Framework
+                    <div class="terminal-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+                    <pre>$ python3 main.py -t https://example.com --discover
 
 [+] Starting discovery on https://example.com
 [+] Detecting CDN and WAF...
 
-       CDN & WAF Detection
-╭──────────┬─────────────────────╮
-│ Property │ Value               │
-├──────────┼─────────────────────┤
-│ Domain   │ example.com         │
-│ CDN      │ Cloudflare          │
-│ WAF      │ Cloudflare WAF      │
-╰──────────┴─────────────────────╯
+       CDN & WAF Detection        
++----------+---------------------+
+| Property | Value               |
++----------+---------------------+
+| Domain   | example.com         |
+| CDN      | Cloudflare          |
+| WAF      | Cloudflare WAF      |
++----------+---------------------+
 
-[+] Enumerating subdomains...
-        Origin IP Candidates
-╭───────────┬──────────────┬────────╮
-│ Source    │ IP / Record  │ Method │
-├───────────┼──────────────┼────────┤
-│ A Records │ 93.184.216.34│ Direct │
-│ crt.sh    │ 93.184.216.34│ Cert   │
-╰───────────┴──────────────┴────────╯
+[+] Origin IP Candidates
++-----------+--------------+--------+
+| Source    | IP / Record  | Method |
++-----------+--------------+--------+
+| A Records | 93.184.216.34| Direct |
+| crt.sh    | 93.184.216.34| Cert   |
++-----------+--------------+--------+
 
-[+] Discovery complete - found 1 potential origin IPs</code></pre>
+[+] Done - found 1 origin IP</pre>
                 </div>
             </div>
             
-            <div id="example-bypass" class="example-content">
+            <div id="bypass" class="example">
                 <div class="terminal">
-                    <div class="terminal-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="terminal-title">WAF Bypass Module</span>
-                    </div>
-                    <pre class="terminal-body"><code>$ python3 main.py -t https://target.com --bypass waf --param id
+                    <div class="terminal-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+                    <pre>$ python3 main.py -t https://target.com --bypass waf
 
-[+] Starting bypass testing on https://target.com
-[+] Testing WAF bypass with payloads (param: id)...
+[+] Testing WAF bypass with payloads...
 
          WAF Bypass Results
-╭──────────┬──────────┬──────────╮
-│ Category │ Attempts │ Bypassed │
-├──────────┼──────────┼──────────┤
-│ SQLi     │ 20       │ 3        │
-│ XSS      │ 20       │ 5        │
-│ LFI      │ 15       │ 2        │
-│ RCE      │ 15       │ 1        │
-│ Header   │ 10       │ 4        │
-╰──────────┴──────────┴──────────╯
++----------+----------+----------+
+| Category | Attempts | Bypassed |
++----------+----------+----------+
+| SQLi     | 20       | 3        |
+| XSS      | 20       | 5        |
+| LFI      | 15       | 2        |
+| RCE      | 15       | 1        |
+| Header   | 10       | 4        |
++----------+----------+----------+
 
-[+] WAF bypass: 15/80 payloads bypassed</code></pre>
+[+] Result: 15/80 payloads bypassed</pre>
                 </div>
             </div>
             
-            <div id="example-scan" class="example-content">
+            <div id="scan" class="example">
                 <div class="terminal">
-                    <div class="terminal-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="terminal-title">Port Scan Module</span>
-                    </div>
-                    <pre class="terminal-body"><code>$ python3 main.py -t https://target.com --scan ports
+                    <div class="terminal-bar"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div>
+                    <pre>$ python3 main.py -t https://target.com --scan ports
 
-[+] Starting scan on https://target.com
 [+] Scanning ports...
 
          Open Ports
-╭──────┬─────────┬───────╮
-│ Port │ Service │ State │
-├──────┼─────────┼───────┤
-│ 22   │ SSH     │ open  │
-│ 80   │ HTTP    │ open  │
-│ 443  │ HTTPS   │ open  │
-│ 3306 │ MySQL   │ open  │
-│ 8080 │ HTTP    │ open  │
-╰──────┴─────────┴───────╯</code></pre>
++------+---------+-------+
+| Port | Service | State |
++------+---------+-------+
+| 22   | SSH     | open  |
+| 80   | HTTP    | open  |
+| 443  | HTTPS   | open  |
+| 3306 | MySQL   | open  |
++------+---------+-------+</pre>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="api" class="section dark">
+    <section id="api">
         <div class="container">
-            <h2 class="section-title">API Reference</h2>
-            <div class="api-grid">
-                <div class="api-card">
+            <h2 class="section-title">API</h2>
+            <div class="grid-3">
+                <div class="card">
                     <h3>Client</h3>
-                    <p>HTTP client with TLS fingerprinting</p>
-                    <div class="code-block">
-                        <code>from core.client import AxiomClient
-
-client = AxiomClient(fingerprint='chrome')
-resp = client.get('https://target.com')
-client.close()</code>
-                    </div>
+                    <div class="code"><code>from core.client import AxiomClient</code></div>
                 </div>
-                <div class="api-card">
-                    <h3>Fingerprint</h3>
-                    <p>Browser fingerprint generation</p>
-                    <div class="code-block">
-                        <code>from core.fingerprint import FingerprintGenerator
-
-fg = FingerprintGenerator()
-ua = fg.user_agent('chrome')
-headers = fg.headers()</code>
-                    </div>
-                </div>
-                <div class="api-card">
+                <div class="card">
                     <h3>WAF Bypass</h3>
-                    <p>Test WAF evasion payloads</p>
-                    <div class="code-block">
-                        <code>from modules.bypass.waf import WAFBypass
-
-waf = WAFBypass(client)
-results = waf.test_sqli(url, param='id')</code>
-                    </div>
+                    <div class="code"><code>from modules.bypass.waf import WAFBypass</code></div>
+                </div>
+                <div class="card">
+                    <h3>Port Scanner</h3>
+                    <div class="code"><code>from modules.scan.port import PortScanner</code></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="community" class="section">
+    <footer>
         <div class="container">
-            <h2 class="section-title">Community</h2>
-            <div class="community-grid">
-                <a href="https://github.com/farhanturu/axiom" class="community-card" target="_blank">
-                    <h3>GitHub</h3>
-                    <p>Source code, issues, and contributions</p>
-                </a>
-                <a href="https://github.com/farhanturu/axiom/issues" class="community-card" target="_blank">
-                    <h3>Issues</h3>
-                    <p>Report bugs and request features</p>
-                </a>
-                <a href="mailto:paongtech@gmail.com" class="community-card">
-                    <h3>Contact</h3>
-                    <p>paongtech@gmail.com</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Axiom. MIT License.</p>
+            <p>Axiom v2.1.0 • MIT License • <a href="https://github.com/farhanturu/axiom" style="color:var(--accent)">GitHub</a></p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        function showTab(name) {
+            document.querySelectorAll('.example').forEach(e => e.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(e => e.classList.remove('active'));
+            document.getElementById(name).classList.add('active');
+            event.target.classList.add('active');
+        }
+        function copy(btn) {
+            navigator.clipboard.writeText(btn.previousElementSibling.textContent);
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 1500);
+        }
+    </script>
 </body>
 </html>
