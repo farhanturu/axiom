@@ -1,52 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
   <defs>
-    <linearGradient id="axiomGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
     </linearGradient>
-    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
     </linearGradient>
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
   
-  <!-- Shield icon -->
-  <g transform="translate(10, 15)">
-    <!-- Shield shape -->
-    <path d="M45 10 L45 45 C45 65 25 80 25 80 C25 80 5 65 5 45 L5 10 Z" 
-          fill="none" stroke="url(#shieldGrad)" stroke-width="3" filter="url(#glow)"/>
-    
-    <!-- Inner shield -->
-    <path d="M45 20 L45 42 C45 55 25 65 25 65 C25 65 5 55 5 42 L5 20 Z" 
-          fill="url(#shieldGrad)" opacity="0.2"/>
-    
-    <!-- Eye icon (security scanning) -->
-    <ellipse cx="25" cy="38" rx="15" ry="10" fill="none" stroke="url(#shieldGrad)" stroke-width="2"/>
-    <circle cx="25" cy="38" r="5" fill="url(#shieldGrad)"/>
-    
-    <!-- Scan lines -->
-    <line x1="10" y1="30" x2="40" y2="30" stroke="url(#shieldGrad)" stroke-width="1" opacity="0.5"/>
-    <line x1="10" y1="46" x2="40" y2="46" stroke="url(#shieldGrad)" stroke-width="1" opacity="0.5"/>
-  </g>
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="55" fill="#0f172a" stroke="url(#grad2)" stroke-width="2"/>
   
-  <!-- Text "AXIOM" -->
-  <text x="75" y="55" font-family="'Segoe UI', Arial, sans-serif" font-size="48" font-weight="800" fill="url(#axiomGrad)" letter-spacing="2">AXIOM</text>
+  <!-- Eye outer shape -->
+  <ellipse cx="60" cy="60" rx="35" ry="22" fill="none" stroke="url(#grad1)" stroke-width="3" filter="url(#glow)"/>
   
-  <!-- Subtitle -->
-  <text x="75" y="80" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#64748b" letter-spacing="3">SECURITY BYPASS FRAMEWORK</text>
+  <!-- Eye inner shape -->
+  <ellipse cx="60" cy="60" rx="25" ry="15" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
   
-  <!-- Decorative line -->
-  <line x1="75" y1="90" x2="350" y2="90" stroke="url(#axiomGrad)" stroke-width="2" opacity="0.3"/>
+  <!-- Iris -->
+  <circle cx="60" cy="60" r="12" fill="url(#grad1)" opacity="0.3"/>
   
-  <!-- Version badge -->
-  <rect x="75" y="98" width="60" height="18" rx="9" fill="url(#axiomGrad)" opacity="0.9"/>
-  <text x="105" y="111" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="600">v2.0.0</text>
+  <!-- Pupil -->
+  <circle cx="60" cy="60" r="6" fill="url(#grad1)"/>
+  
+  <!-- Center dot -->
+  <circle cx="60" cy="60" r="2" fill="white"/>
+  
+  <!-- Scan line -->
+  <line x1="20" y1="60" x2="100" y2="60" stroke="url(#grad2)" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Corner accents -->
+  <path d="M15 15 L25 15 L25 25" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  <path d="M105 15 L95 15 L95 25" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  <path d="M15 105 L25 105 L25 95" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  <path d="M105 105 L95 105 L95 95" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Pulse rings -->
+  <circle cx="60" cy="60" r="40" fill="none" stroke="url(#grad1)" stroke-width="1" opacity="0.2"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#grad1)" stroke-width="1" opacity="0.1"/>
 </svg>

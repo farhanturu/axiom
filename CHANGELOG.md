@@ -2,6 +2,22 @@
 
 All notable changes to Axiom will be documented in this file.
 
+## [2.1.0] - 2026-07-22
+
+### Code Quality & UI Improvements
+
+#### New
+- **New Logo** - Eye scanner icon with cyan-purple gradient and pulse effects
+- **Updated README** - Professional layout with badges and feature table
+- **Code Cleanup** - Removed unnecessary comments, cleaner variable naming
+- **Type Hints** - Comprehensive type annotations throughout codebase
+
+#### Improvements
+- **Better error messages** - More descriptive output
+- **Optimized imports** - Reduced memory footprint
+- **Cleaner CLI output** - Better formatting
+- **Improved documentation** - Updated examples
+
 ## [2.0.0] - 2026-07-22
 
 ### Major Upgrade - Multi-Layer Security Bypass Framework
