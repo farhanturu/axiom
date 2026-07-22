@@ -253,6 +253,33 @@
         </div>
     </section>
 
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Request a Feature</h2>
+            <p style="text-align:center; color:var(--text-muted); margin-bottom:30px;">Have an idea to make Axiom better? We'd love to hear it!</p>
+            <div class="feature-request">
+                <form id="featureForm" onsubmit="submitFeature(event)">
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" id="featEmail" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Feature Title</label>
+                        <input type="text" id="featTitle" placeholder="e.g., Add GraphQL bypass support" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="featDesc" rows="4" placeholder="Describe the feature you'd like to see..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Request</button>
+                </form>
+                <div id="featSuccess" style="display:none; text-align:center; padding:20px; color:var(--accent);">
+                    ✓ Thank you! Your feature request has been submitted.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <p>Axiom v2.1.0 • MIT License • <a href="https://github.com/farhanturu/axiom" style="color:var(--accent)">GitHub</a></p>
@@ -267,6 +294,26 @@
             event.target.classList.add('active');
         }
         function copy(btn) {
+            navigator.clipboard.writeText(btn.previousElementSibling.textContent);
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 2000);
+        }
+        function submitFeature(e) {
+            e.preventDefault();
+            const email = document.getElementById('featEmail').value;
+            const title = document.getElementById('featTitle').value;
+            const desc = document.getElementById('featDesc').value;
+            
+            // Create GitHub issue URL
+            const url = `https://github.com/farhanturu/axiom/issues/new?template=feature_request.md&title=${encodeURIComponent(title)}&body=${encodeURIComponent('Email: ' + email + '\n\n' + desc)}`;
+            
+            document.getElementById('featureForm').style.display = 'none';
+            document.getElementById('featSuccess').style.display = 'block';
+            
+            // Open GitHub in new tab
+            window.open(url, '_blank');
+        }
+    </script>
             navigator.clipboard.writeText(btn.previousElementSibling.textContent);
             btn.textContent = 'Copied!';
             setTimeout(() => btn.textContent = 'Copy', 1500);
