@@ -312,6 +312,46 @@ def cmd_proxy(args):
         out.info(f'Tor proxy status: {tor.alive_count} active')
 
 
+def cmd_help():
+    out.banner()
+    print()
+    print('AXIOM - Multi-Layer Security Bypass Framework')
+    print('=' * 50)
+    print()
+    print('Usage:')
+    print('  python3 main.py -t <target> [options]')
+    print()
+    print('Options:')
+    print('  --discover          Run discovery (CDN, WAF, origin IPs)')
+    print('  --tech              Detect technology stack')
+    print('  --bypass <type>     Run bypass tests (waf/captcha/ratelimit/botdetect/all)')
+    print('  --scan <type>       Run scan (ports/dirs/vulns/all)')
+    print('  --full              Run complete assessment')
+    print('  --output <file>     Save results to JSON file')
+    print('  --param <name>      Parameter name for injection (default: id)')
+    print('  --method <GET|POST> HTTP method (default: GET)')
+    print('  --quick             Quick scan mode')
+    print('  --verbose           Verbose output')
+    print()
+    print('Examples:')
+    print('  python3 main.py -t https://example.com --discover')
+    print('  python3 main.py -t https://example.com --bypass waf --param id')
+    print('  python3 main.py -t https://example.com --scan all')
+    print('  python3 main.py -t https://example.com --full')
+    print()
+    print('Documentation: https://farhanturu.github.io/axiom')
+    print('GitHub: https://github.com/farhanturu/axiom')
+    print('Issues: https://github.com/farhanturu/axiom/issues')
+    print()
+
+
+def cmd_docs():
+    import webbrowser
+    url = 'https://farhanturu.github.io/axiom'
+    print(f'Opening documentation: {url}')
+    webbrowser.open(url)
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog='axiom',
@@ -333,6 +373,7 @@ Examples:
     parser.add_argument('--verbose', '-v', action='store_true', help='Verbose output')
     parser.add_argument('--api-key', '-k', help='API key for SecurityTrails/hunter.io')
     parser.add_argument('--timeout', type=int, default=10, help='Request timeout (default: 10s)')
+    parser.add_argument('--docs', action='store_true', help='Open documentation in browser')
 
     discover = parser.add_argument_group('Discovery')
     discover.add_argument('--discover', action='store_true', help='Run discovery (CDN, WAF, origin IP)')
@@ -357,11 +398,15 @@ Examples:
     proxy.add_argument('--tor-port', type=int, default=9050, help='Tor SOCKS port')
     proxy.add_argument('--new-ip', action='store_true', help='Request new Tor identity')
 
-    args = parser.parse_args()
-
     if len(sys.argv) == 1 or '--help' in sys.argv or '-h' in sys.argv:
         cmd_help()
         sys.exit(0)
+
+    if args.docs:
+        cmd_docs()
+        sys.exit(0)
+
+    args = parser.parse_args()
 
     if not any([args.discover, args.bypass, args.scan, args.full, args.proxy_action]):
         parser.print_help()
