@@ -17,6 +17,9 @@ Penetration testing toolkit for CDN, WAF, CAPTCHA, bot detection, and rate limit
 
 **Designed for authorized security testing and educational purposes only.**
 
+[![Documentation](https://img.shields.io/badge/Documentation-06b6d4?style=for-the-badge&logo=readthedocs&logoColor=white)](https://farhanturu.github.io/axiom)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/farhanturu/axiom)
+
 </div>
 
 ---
